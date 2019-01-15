@@ -1,10 +1,17 @@
+import { square, diag } from "./lib.js";
+import { helloWorld } from "./lib.js";
+import { printAmt, calculateFinalPurchaseAmount } from "./lib.js";
+
 (function() {
+  console.log(helloWorld.replace("Hello", "Hi"));
+  console.log(square(3));
+  console.log(diag(3, 4));
   // var msg = "Book a room in the Hotel ";
   // function updateMsg() {
   //   var el = document
   //     .querySelectorAll(".message")
   //     .forEach(function(index, val) {
-  //       index.textContent = msg;
+  //       index.textContent = msg;s
   //     });
   // }
 
@@ -110,67 +117,65 @@
 
   var today = new Date();
   var year = today.getFullYear();
-  // var year1 = today.getFullYear();
-  var est = new Date('Apr 16, 1996 12:34:15');
+  var year1 = today.getFullYear();
+  var est = new Date("Apr 16, 1996 12:34:15");
   var diff = today.getTime() - est.getTime();
-  diff = (diff / 31556900000);
+  diff = diff / 31556900000;
 
   var saying = "home Sweet Home";
   var msg =
-    '<div class="grid-container"> ' + 
-    '<div class="grid-item item-1"> <h2>lenght</h2><p> ' +
+    '<div class="grid-container"> ' +
+    '<div class="grid-item item-1"> <p>lenght</p><p> ' +
     saying.length +
     " </p></div>";
   msg +=
-    ' <div class="grid-item item-2"> <h2>uppercase</h2><p> ' +
+    ' <div class="grid-item item-2"> <p>uppercase</p><p> ' +
     saying.toLocaleUpperCase() +
     " </p></div> ";
   msg +=
-    ' <div class="grid-item item-3"> <h2>lowercase</h2><p> ' +
+    ' <div class="grid-item item-3"> <p>lowercase</p><p> ' +
     saying.toLocaleLowerCase() +
     " </p> </div>";
   msg +=
-    ' <div class="grid-item item-4"> <h2>Char index: </h2><p> ' +
+    ' <div class="grid-item item-4"> <p>Char index: </p><p> ' +
     saying.charAt(12) +
     " </p></div> ";
   msg +=
-    ' <div class="grid-item item-5"> <h2>first ee</h2><p> ' +
+    ' <div class="grid-item item-5"> <p>first ee</p><p> ' +
     saying.indexOf("ee") +
     " </p> </div>";
   msg +=
-    ' <div class="grid-item item-6"> <h2>last e</h2><p> ' +
+    ' <div class="grid-item item-6"> <p>last e</p><p> ' +
     saying.indexOf("e") +
     " </p></div> ";
   msg +=
-    ' <div class="grid-item item-7"> <h2>char index: 8-14</h2><p> ' +
+    ' <div class="grid-item item-7"> <p>char index: 8-14</p><p> ' +
     saying.substring(8, 14) +
     " </p> </div>";
   msg +=
-    ' <div class="grid-item item-8"> <h2>replace</h2><p> ' +
+    ' <div class="grid-item item-8"> <p>replace</p><p> ' +
     saying.replace("me", "w") +
     " </p></div> ";
-    msg +=
-    ' <div class="grid-item item-9"> <h2> &copy' +
-    year +
-    " </p></div></div> ";
+  msg +=
+    ' <div class="grid-item item-9"> <p> &copy' + year + " </p></div></div> ";
 
-    var orginalNumber = 12.45678;
-    var randomNumber = Math.floor(Math.random() * 10) + 1;
-    msg2 =
-    ' <div class="grid-container"> ' + 
+  var orginalNumber = 12.45678;
+  var randomNumber = Math.floor(Math.random() * 10) + 1;
+  var msg2 =
+    ' <div class="grid-container"> ' +
     ' <div class="grid-item item-8"> <h4>Orginal Number</h4><p> ' +
     orginalNumber +
     " </p></div> ";
-    msg2 +=
+  msg2 +=
     ' <div class="grid-item item-4"> <h4>toFixed(3) Number</h4><p> ' +
     orginalNumber.toFixed(3) +
     " </p></div> ";
-    msg2 +=
+  msg2 +=
     ' <div class="grid-item item-5"> <h4>toPrecision(3) Number</h4><p> ' +
     orginalNumber.toPrecision(3) +
     " </p></div> ";
-    var orginalNumber = 12.45678;
-    msg2 +=
+
+  msg2 +=
     ' <div class="grid-item item-6"> <h4>Random Number</h4><p> ' +
     randomNumber +
     " </p></div></div> ";
@@ -178,7 +183,100 @@
   var el = document.getElementById("info-1");
   el.innerHTML = msg2;
 
-  var el = document.getElementById("info-2");
-  el.innerHTML = msg;
+  var el2 = document.getElementById("info-2");
+  el2.innerHTML = msg;
 
+  // create hotel object and write out there offers
+
+  // create the object using object literals
+  var hotelP = {
+    name: "Park",
+    roomRate: 240.0, // amount in euros
+    discount: 15, // percentage discount
+    offerPrice: function() {
+      var offerRate = this.roomRate * ((100 - this.discount) / 100);
+      return offerRate;
+    }
+  };
+
+  // write out the hotelP name, standard rate and spaecial rate
+  var hotelPNameUl, roomRateLi, specialRateLi;
+
+  hotelPNameUl = document.getElementById("hotelName");
+  roomRateLi = document.createElement("li");
+  specialRateLi = document.createElement("li");
+
+  hotelPNameUl.textContent = "Hotel: " + hotelP.name;
+  roomRateLi.textContent = "Room rate: " + printAmt(hotelP.roomRate);
+  specialRateLi.textContent = "Offer price: " + printAmt(hotelP.offerPrice());
+
+  hotelPNameUl.appendChild(roomRateLi);
+  hotelPNameUl.appendChild(specialRateLi);
+
+  let amount2 = 99.99;
+  let finAmount = document.getElementById("rooms1");
+  finAmount.textContent = printAmt(calculateFinalPurchaseAmount(amount2));
+
+  var windowDets =
+    "<h2> Browser Window: </h2><p> Inner Height: " + innerHeight + "</p>";
+  windowDets += "<p>Inner Width: " + innerWidth + "</p>";
+  windowDets += "<p>Window History: " + window.history.length + "</p>";
+  windowDets += "<p>Screen Height: " + window.screen.height + "</p>";
+  windowDets += "<p>Screen Width: " + window.screen.width + "</p>";
+
+  alert("Current page: " + window.location);
+
+  var element = document.getElementById("window");
+
+  element.innerHTML = windowDets;
+})();
+
+(function() {
+  var expiryMsg;
+  var today;
+  var elEnds;
+
+  function offerExpirys(today) {
+    var weekFromToday, day, date, month, year, dayNames, monthNames;
+
+    // add seven days time
+    weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
+    // create arrays to hold the names of days / months
+    dayNames = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    monthNames = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    // collect part of the date to show on the page
+    day = dayNames[weekFromToday.getDay()];
+    date = weekFromToday.getDate();
+    month = monthNames[weekFromToday.getMonth()];
+    year = weekFromToday.getFullYear();
+    // create the message
+    expiryMsg = "Offer expires next ";
+    expiryMsg += day + " <br>(" + date + " " + month + " " + year + ")";
+    return expiryMsg;
+  }
+
+  today = new Date();
+  elEnds = document.getElementById("roomType1");
+  elEnds.innerHTML = offerExpirys(today);
 })();

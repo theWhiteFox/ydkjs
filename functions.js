@@ -1,7 +1,3 @@
-var helloWorld = 'Hello World!';
-
-console.log(helloWorld.replace('Hello', 'Hi'));
-
 var today = new Date();
 var year = today.getFullYear();
 var year1 = today.getFullYear();
