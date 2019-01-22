@@ -9,7 +9,7 @@ Basic programming concepts using JS:
 
 ## Books
 |  Now  | In the cut  |
-|---|---:|
+|:---|---:|
 | Problem Solving 101 A Simple Book for Smart People  Ken Watanabe |  Eloquent Javascript Marijn Haverbeke |
 | JavaScript jQuery Jon Duckett  | JavaScript - Novice to Ninja Darren Jones   |
 | You Dont Know JS Up and Going Kyle Simpson |   Laravel: Up & Running Matt Stauffer |
