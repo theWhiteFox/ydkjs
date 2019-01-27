@@ -1,30 +1,30 @@
-export const sqrt = Math.sqrt;
-export function square(x) {
-  return x * x;
-}
-export function diag(x, y) {
-  return sqrt(square(x) + square(y));
-}
+// export const sqrt = Math.sqrt;
+// export function square(x) {
+//   return x * x;
+// }
+// export function diag(x, y) {
+//   return sqrt(square(x) + square(y));
+// }
 
-export var helloWorld = "Hello World!";
+// export var helloWorld = "Hello World!";
 
-let amt = 0.0;
+// let amt = 0.0;
 
-export function printAmt(amt) {
-  return "€" + amt.toFixed(2);
-}
+// export function printAmt(amt) {
+//   return "€" + amt.toFixed(2);
+// }
 
 function formatAmt() {
   // console.log(square(3));
   return "€" + amt.toFixed(2);
 }
 
-const TAX_RATE = 0.08;
+// const TAX_RATE = 0.08;
 
-export function calculateFinalPurchaseAmount(amount) {
-  amount = amount + amount * TAX_RATE;
-  return amount;
-}
+// export function calculateFinalPurchaseAmount(amount) {
+//   amount = amount + amount * TAX_RATE;
+//   return amount;
+// }
 
 const one = () => {
   let a = 1;
@@ -53,9 +53,9 @@ const outer = () => {
 // one();
 // two();
 
-const SPENDING_THRESHOLD = 200.0;
+// const SPENDING_THRESHOLD = 200.0;
 const PHONE_PRICE = 89.0;
-const ACCESSORY_PRICE = 9.0;
+// const ACCESSORY_PRICE = 9.0;
 
 var currentAcc = 303.01;
 var amount = 0;
@@ -82,3 +82,28 @@ if(amount > currentAcc) {
 // console.log(square(11)); // 121
 // console.log(diag(4, 3)); // 5
 // printAmt(amt * 2);
+
+// Pratice
+
+var SPENDING_THRESHOLD = 200;
+var TAX_RATE = 0.08;
+var PHONE_PURCHASE = 99.99;
+var ACCESSORY_PRICE = 9.99;
+
+var bankAccountBalance = 303.91;
+var totalPrice = 0;
+
+while(totalPrice < bankAccountBalance) {
+  totalPrice += PHONE_PRICE;
+  if(totalPrice < SPENDING_THRESHOLD) {
+    totalPrice += ACCESSORY_PRICE;
+  }
+}
+console.log(totalPrice);
+
+// let counter = 0;
+
+// while(counter <= 10) {
+//   console.log(counter++);
+// }
+// tax function
